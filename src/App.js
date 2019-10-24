@@ -18,14 +18,19 @@ function App() {
             <Link to="/setPickUpDate">Set Pick Up Date</Link>
             <span>/</span>
             <Link to="/homePage">Home</Link>
+            <span>/</span>
+            <Link to="/addPackage">+Add</Link>
             </div>
 
             <Switch>
           <Route exact path="/setPickUpDate">
           <PickUpInput/>
           </Route>
-          <Route path="/homePage">
+          <Route path="/addPackage">
           <PackageWarehouseInput/>
+          </Route>
+          <Route path="/homePage">
+          <Home/>
           </Route>
         </Switch>
 

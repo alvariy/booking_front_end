@@ -34,7 +34,7 @@ class PackageWarehouseInput extends React.Component{
         
         addPackage = () => {
             console.log(this.state);
-            fetch("http://localhost:8080/", {mode: 'cors' , 
+            fetch("http://localhost:8080/packages", {mode: 'cors' , 
              method: 'POST',
              headers: new Headers({'Content-Type': 'application/json'}),
              body: JSON.stringify(this.state)

@@ -5,7 +5,7 @@ class PickUpInput extends React.Component{
         super(props);
             this.state = {
                 wayBillNumber: "",
-                pickUpTime: ""
+                pickUdDate: ""
             }
         }
 
@@ -14,11 +14,18 @@ class PickUpInput extends React.Component{
            };
     
         handlepickUpTime = (event) => {
-            this.setState({pickUpTime: event.target.value});
+            this.setState({pickUdDate: event.target.value});
            };
         
         addPickUp = () => {
             console.log(this.state);
+            fetch("http://localhost:8080/packages/" + this.state.wayBillNumber, {mode: 'cors' , 
+            method: 'PUT',
+            headers: new Headers({'Content-Type': 'application/json'}),
+            body: JSON.stringify(this.state)
+           },).then(res => res.json());
+
+
             fetch("http://localhost:8080/pickups", {mode: 'cors' , 
              method: 'POST',
              headers: new Headers({'Content-Type': 'application/json'}),
@@ -36,7 +43,7 @@ class PickUpInput extends React.Component{
             </div>
             <div>
             <span>Pick-Up Time:</span>
-            <input type="text"  value = {this.state.pickUpTime} onChange={this.handlepickUpTime}/>
+            <input type="text"  value = {this.state.pickUdDate} onChange={this.handlepickUpTime}/>
             </div>
            </div>
            <button onClick={this.addPickUp}>Confirm</button>
